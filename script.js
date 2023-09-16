@@ -1,4 +1,7 @@
+const divideZeroError = "NO DIVDE 0";
+
 const convertInfixToPostfix = (exp) => {
+  exp = exp.split(" ");
   let stk = [];
   let res = [];
 
@@ -59,7 +62,7 @@ const evaluatePostfix = (exp) => {
     }
   });
 
-  return stk.length == 1 ? stk[0] : "ERROR"; // Stack should only have 1 element
+  return stk.length == 1 ? Math.round(stk[0] * 10) / 10 : "ERROR"; // Stack should only have 1 element
 };
 
 const operate = (a, b, op) => {
@@ -75,4 +78,64 @@ const operate = (a, b, op) => {
   }
 };
 
-console.log(evaluatePostfix(convertInfixToPostfix(["4", "+", "0.2"])));
+const numbersContainer = document.querySelector(".numbers-container");
+
+const createNumberButtons = () => {
+  let num = 1;
+  while (num <= 9) {
+    let row = document.createElement("div");
+    row.classList.toggle("buttons-row");
+    for (let i = 0; i < 3; i++) {
+      let button = document.createElement("button");
+      button.addEventListener("click", (e) => onNumClick(e));
+      button.textContent = num++;
+      row.appendChild(button);
+    }
+    numbersContainer.appendChild(row);
+  }
+
+  let lastRow = document.createElement("div");
+
+  lastRow.classList.toggle("buttons-row");
+  let zero = document.createElement("button");
+  zero.style.setProperty("flex", 2.34);
+  zero.addEventListener("click", (e) => onNumClick(e));
+  zero.textContent = "0";
+  lastRow.appendChild(zero);
+
+  let decimal = document.createElement("button");
+  decimal.style.setProperty("flex", 1);
+  decimal.addEventListener("click", (e) => onNumClick(e));
+  decimal.textContent = ".";
+  lastRow.appendChild(decimal);
+
+  numbersContainer.appendChild(lastRow);
+};
+
+createNumberButtons();
+
+const output = document.querySelector("#output");
+
+const onNumClick = (e) => {
+  if (output.textContent == divideZeroError) {
+    output.textContent = "";
+  }
+  output.textContent += e.target.textContent;
+};
+
+const onOperatorClick = (e) => {
+  if (output.textContent == divideZeroError) {
+    output.textContent = "";
+  }
+  switch (e.target.textContent) {
+    case "A/C":
+      output.textContent = "";
+      return;
+    case "=":
+      let res = evaluatePostfix(convertInfixToPostfix(output.textContent));
+      output.textContent = res == "Infinity" ? divideZeroError : res;
+      return;
+    default:
+      output.textContent += ` ${e.target.textContent} `;
+  }
+};

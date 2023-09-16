@@ -11,10 +11,20 @@
   <body>
     <div class="container">
       <div class="calc-container">
-        <div class="output-container"></div>
+        <div class="output-container">
+          <p id="output"></p>
+        </div>
         <div class="buttons-container">
+          <!-- Number buttons -->
           <div class="numbers-container"></div>
-          <div class="operations-container"></div>
+          <div class="operations-container">
+            <button onclick="onOperatorClick(event)">A/C</button>
+            <button onclick="onOperatorClick(event)">+</button>
+            <button onclick="onOperatorClick(event)">-</button>
+            <button onclick="onOperatorClick(event)">*</button>
+            <button onclick="onOperatorClick(event)">/</button>
+            <button onclick="onOperatorClick(event)">=</button>
+          </div>
         </div>
       </div>
     </div>

@@ -9,6 +9,8 @@
   width: 550px;
   height: 680px;
   background-color: goldenrod;
+  border: 2.5px solid black;
+  border-radius: 30px;
 }
 
 .output-container,
@@ -21,6 +23,13 @@
   background-color: azure;
   height: 80px;
   margin-top: 20px;
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  border: 0.5px black solid;
+  border-radius: 30px;
 }
 
 .buttons-container {
@@ -36,10 +45,27 @@
 
 .numbers-container {
   background-color: blanchedalmond;
-  flex: 3 1 0;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.numbers-container .buttons-row {
+  display: flex;
+  flex: 1;
+}
+
+button {
+  border: 0.7px black solid;
+  padding: 15px;
+  background-color: beige;
+  text-align: center;
+  flex: 1;
 }
 
 .operations-container {
   background-color: tomato;
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
