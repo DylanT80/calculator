@@ -1,0 +1,45 @@
+.container {
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calc-container {
+  width: 550px;
+  height: 680px;
+  background-color: goldenrod;
+}
+
+.output-container,
+.buttons-container {
+  width: 90%;
+  margin: auto;
+}
+
+.output-container {
+  background-color: azure;
+  height: 80px;
+  margin-top: 20px;
+}
+
+.buttons-container {
+  margin-top: 40px;
+  height: 520px;
+  display: flex;
+}
+
+.numbers-container,
+.operation-container {
+  height: 100%;
+}
+
+.numbers-container {
+  background-color: blanchedalmond;
+  flex: 3 1 0;
+}
+
+.operations-container {
+  background-color: tomato;
+  flex: 1;
+}

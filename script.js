@@ -1,5 +1,4 @@
 const convertInfixToPostfix = (exp) => {
-  exp = exp.split(" ");
   let stk = [];
   let res = [];
 
@@ -53,8 +52,8 @@ const evaluatePostfix = (exp) => {
   exp.forEach((str) => {
     if (isNumber(str)) stk.push(Number(str));
     else {
-      let a = stk.pop();
       let b = stk.pop();
+      let a = stk.pop();
       if (!(isNumber(a) && isNumber(b))) return "ERROR"; // Operands should be numbers
       stk.push(operate(a, b, str));
     }
@@ -76,4 +75,4 @@ const operate = (a, b, op) => {
   }
 };
 
-console.log(evaluatePostfix(convertInfixToPostfix("4")));
+console.log(evaluatePostfix(convertInfixToPostfix(["4", "+", "0.2"])));
